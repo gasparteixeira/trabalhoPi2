@@ -1,0 +1,113 @@
+@CHARSET "UTF-8";
+
+*{
+	font-family:"Trebuchet MS";
+	color:#333;
+}
+
+#cabecalho{
+	width: 983px;
+	height:80px;
+	line-height: 80px;
+	padding-left: 20px;
+	margin:0 auto;
+}
+
+#menu{
+	width: 1003px;
+	height:20px;
+	line-height: 20px;
+	margin:0 auto;
+	display:block;
+}
+#menu ul{
+	list-style:none;
+	margin:0;
+	padding:0;
+}
+#menu ul li{
+	float:left;
+	margin:0 2px;
+}
+#menu ul li a{
+	display:block;
+	padding:3px 5px;
+	background:#f4f4f4;
+	border:1px solid #ddd;
+	color:#666;
+	text-decoration:none;
+}
+#menu ul li a:hover{
+	color:#fff;
+	background:#666;
+}
+#contente{
+	width: 983px;
+	padding:10px;
+	min-height:450px;
+	margin:0 auto;
+	font-size:12px;
+}
+.grid table{
+	width:100%;
+	border:1px solid #ccc;
+}
+.grid table thead{
+	background:#333;
+	
+}
+.grid table th{
+	color: white;
+	padding:3px;
+}
+.grid table td{
+	padding:3px;
+}
+.grid table tr.escuro{
+	background: #ddd;
+}
+.grid table tr.claro{
+	background: #f0f0f0;
+}
+.frmNovo form{
+	width:400px;
+	margin:40px auto;
+}
+.frmNovo label{
+	display: block;
+}
+.clear{
+	display:block;
+	height:1px;
+	clear:both;
+}
+.frmNovo input.submit,
+.frmNovo input[type="submit"]{
+	-webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    padding:3px 10px;
+    font: bold 12px "Trebuchet MS";
+    color:#fff;
+    background: #666;
+    border:1px solid #444;
+    margin-top:10px;
+}
+.frmNovo input.text,
+.frmNovo input[type="text"]{
+	width: 300px;
+	padding:3px 5px;
+	border:1px solid #999;
+	background:#f0f0f0;
+	font:normal 12px "Trebuchet MS";
+	margin-bottom:10px;
+}
+#base{
+	width: 1003px;
+	height:20px;
+	line-height: 20px;
+	margin:10px auto;
+	padding-top:10px;
+	border-top: 1px dotted #ccc;
+	display:block;
+}
