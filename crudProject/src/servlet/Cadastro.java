@@ -36,10 +36,10 @@ public class Cadastro extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		//PrintWriter out = response.getWriter();
+		PrintWriter out = response.getWriter();
 		
 		
-		//out.print(request.toString());
+		out.print(request.toString());
 	}
 
 }
