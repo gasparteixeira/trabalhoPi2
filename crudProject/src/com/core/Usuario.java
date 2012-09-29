@@ -1,35 +1,35 @@
-package com.pessoa;
+package com.core;
 
 import java.sql.Date;
 
 /**
  *
  */
-public class Pessoa
+public class Usuario
 {
     private int id = 0;
     private String nome = "";
-    private String cidade = "";
-    private String endereco = "";
+    private String email = "";
+    private String senha = "";
     private Date date = null;
 
     /**
      * 
      */
-    public Pessoa(final int id, final String nome, final String cidade, final String endereco, final Date date)
+    public Usuario(final int id, final String nome, final String email, final String senha, final Date date)
     {
         this.id = id;
         this.nome = nome;
-        this.cidade = cidade;
-        this.endereco = endereco;
+        this.email = email;
+        this.senha = senha;
         this.date = date;
     }
 
-    public Pessoa(final String nome, final String cidade, final String endereco, final Date date)
+    public Usuario(final String nome, final String email, final String senha, final Date date)
     {
         this.nome = nome;
-        this.cidade = cidade;
-        this.endereco = endereco;
+        this.email = email;
+        this.senha = senha;
         this.date = date;
     }
 
@@ -52,17 +52,17 @@ public class Pessoa
     /**
      * @return the cidade
      */
-    public String getCidade()
+    public String getEmail()
     {
-        return cidade;
+        return email;
     }
 
     /**
      * @return the endereco
      */
-    public String getEndereco()
+    public String getSenha()
     {
-        return endereco;
+        return senha;
     }
 
     /**

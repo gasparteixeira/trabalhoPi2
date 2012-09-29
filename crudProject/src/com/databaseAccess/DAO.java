@@ -1,4 +1,4 @@
-package com.DAO;
+package com.databaseAccess;
 
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -7,15 +7,15 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.pessoa.Pessoa;
+import com.core.Usuario;
 
 /**
  *
  */
 public class DAO
 {
-
-    private static final String url = "jdbc:postgresql://localhost/My_Database";
+    // TODO mudar as configurações para o arquivo de properties
+    private static final String url = "jdbc:postgresql://localhost/trabalhoPi2";
     private static final String user = "postgres";
     private static final String pass = "abc";
     private String sqlcomando = "";
@@ -91,10 +91,10 @@ public class DAO
     /*
      * return all objects from database
      */
-    public List<Pessoa> getPessoas()
+    public List<Usuario> getUsuario()
     {
-        final List<Pessoa> list = new ArrayList<Pessoa>();
-        Pessoa p;
+        final List<Usuario> list = new ArrayList<Usuario>();
+        Usuario p;
 
         if (getConnection())
         {
@@ -106,7 +106,7 @@ public class DAO
                 {
                     while (results.next())
                     {
-                        p = new Pessoa(
+                        p = new Usuario(
                                 results.getInt(1),
                                 results.getString(2),
                                 results.getString(3),
@@ -131,22 +131,22 @@ public class DAO
     /*
      * insert into database an object
      */
-    public void inserir(final Pessoa p)
+    public void inserir(final Usuario p)
     {
 
         sqlcomando = "INSERT INTO pessoa "
-                + "(nome, cidade, endereco, data) "
+                + "(nome, email, senha, data) "
                 + "VALUES ("
                 + "'"
                 + p.getNome()
                 + "'"
                 + ","
                 + "'"
-                + p.getCidade()
+                + p.getEmail()
                 + "'"
                 + ","
                 + "'"
-                + p.getEndereco()
+                + p.getSenha()
                 + "'"
                 + ","
                 + "'"
@@ -198,7 +198,7 @@ public class DAO
     /*
      * edita pessoa
      */
-    public void editar(final Pessoa p)
+    public void editar(final Usuario p)
     {
 
         sqlcomando = "UPDATE pessoa SET "
@@ -206,12 +206,12 @@ public class DAO
                 + p.getNome()
                 + "'"
                 + ","
-                + "cidade='"
-                + p.getCidade()
+                + "email='"
+                + p.getEmail()
                 + "'"
                 + ","
-                + "endereco='"
-                + p.getEndereco()
+                + "senha='"
+                + p.getSenha()
                 + "'"
                 + ","
                 + "data='"

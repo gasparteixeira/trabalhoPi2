@@ -20,7 +20,7 @@ CREATE DATABASE "trabalhoPi2"
 DROP TABLE IF EXISTS usuario cascade;
 CREATE TABLE usuario (
   ID serial  NOT NULL
-  , name VARCHAR(50)
+  , nome VARCHAR(50)
   , email VARCHAR(50)
   , senha VARCHAR(50)
   , data DATE  
