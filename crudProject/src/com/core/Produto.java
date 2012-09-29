@@ -1,21 +1,35 @@
 package com.core;
 
-import java.util.List;
-
 /**
  *
  */
 public class Produto
 {
-    private Item item;
-    private List<Item> l;
+    private int id;
+    private final String descricao;
 
     /**
      * 
      */
-    public Produto()
+    public Produto(final String descricao)
     {
-        // TODO Auto-generated constructor stub
+        this.descricao = descricao;
+    }
+
+    /**
+     * @return the id
+     */
+    public int getId()
+    {
+        return id;
+    }
+
+    /**
+     * @return the descricao
+     */
+    public String getDescricao()
+    {
+        return descricao;
     }
 
 }
