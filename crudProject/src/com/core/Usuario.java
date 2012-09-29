@@ -25,12 +25,11 @@ public class Usuario
         this.date = date;
     }
 
-    public Usuario(final String nome, final String email, final String senha, final Date date)
+    public Usuario(final String nome, final String email, final String senha)
     {
         this.nome = nome;
         this.email = email;
         this.senha = senha;
-        this.date = date;
     }
 
     /**

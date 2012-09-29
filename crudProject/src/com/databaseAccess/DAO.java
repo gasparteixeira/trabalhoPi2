@@ -14,10 +14,11 @@ import com.core.Usuario;
  */
 public class DAO
 {
-    // TODO mudar as configurações para o arquivo de properties
-    private static final String url = "jdbc:postgresql://localhost/trabalhoPi2";
-    private static final String user = "postgres";
-    private static final String pass = "abc";
+
+    private final String url;
+    private final String user;
+    private final String pass;
+    private final DatabaseProperties db = new DatabaseProperties();
     private String sqlcomando = "";
     private java.sql.Connection conn = null;
     private Statement sql;
@@ -28,7 +29,11 @@ public class DAO
      */
     public DAO()
     {
-
+        //inicializa as configurações do banco        
+        db.getProperties();
+        url = db.getUrl();
+        user = db.getUser();
+        pass = db.getPass();
     }
 
     /*
@@ -101,7 +106,7 @@ public class DAO
             try
             {
                 sql = conn.createStatement();
-                results = sql.executeQuery("SELECT * from pessoa");
+                results = sql.executeQuery("SELECT * from usuario");
                 if (results != null)
                 {
                     while (results.next())
@@ -129,29 +134,29 @@ public class DAO
     }
 
     /*
-     * insert into database an object
+     * Insere um usuario na tabela de usuarios
+     * não necessita receber uma data, usa o current_date do postgres
      */
-    public void inserir(final Usuario p)
+    public void inserir(final Usuario usuario)
     {
 
-        sqlcomando = "INSERT INTO pessoa "
+        sqlcomando = "INSERT INTO usuario "
                 + "(nome, email, senha, data) "
                 + "VALUES ("
                 + "'"
-                + p.getNome()
+                + usuario.getNome()
                 + "'"
                 + ","
                 + "'"
-                + p.getEmail()
+                + usuario.getEmail()
                 + "'"
                 + ","
                 + "'"
-                + p.getSenha()
+                + usuario.getSenha()
                 + "'"
                 + ","
-                + "'"
-                + p.getDate()
-                + "')";
+                + "current_date"
+                + ")";
 
         //System.out.println(sqlcomando);
         try
@@ -171,14 +176,14 @@ public class DAO
     }
 
     /*
-     * Remove uma pessoa do banco conforme o id
+     * Remove um usuario do banco conforme o id
      */
     public void remover(final int id)
     {
 
-        sqlcomando = "DELETE FROM pessoa WHERE id=" + id;
+        sqlcomando = "DELETE FROM usuario WHERE id=" + id;
 
-        System.out.println(sqlcomando);
+        //System.out.println(sqlcomando);
         try
         {
             if (getConnection())
@@ -196,30 +201,28 @@ public class DAO
     }
 
     /*
-     * edita pessoa
+     * edita usuario
      */
-    public void editar(final Usuario p)
+    public void editar(final Usuario usuario)
     {
 
         sqlcomando = "UPDATE pessoa SET "
                 + "nome='"
-                + p.getNome()
+                + usuario.getNome()
                 + "'"
                 + ","
                 + "email='"
-                + p.getEmail()
+                + usuario.getEmail()
                 + "'"
                 + ","
                 + "senha='"
-                + p.getSenha()
+                + usuario.getSenha()
                 + "'"
                 + ","
-                + "data='"
-                + p.getDate()
-                + "'"
+                + "data= current_date"
                 + " WHERE "
                 + "id ="
-                + p.getId();
+                + usuario.getId();
 
         System.out.println(sqlcomando);
         try
