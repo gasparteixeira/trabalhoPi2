@@ -1,4 +1,4 @@
-package com.pessoa;
+package com.entity;
 
 import java.sql.Date;
 

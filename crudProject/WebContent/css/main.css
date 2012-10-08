@@ -94,7 +94,9 @@
     margin-top:10px;
 }
 .frmNovo input.text,
-.frmNovo input[type="text"]{
+.frmNovo input.password,
+.frmNovo input[type="text"],
+.frmNovo input[type="password"]{
 	width: 300px;
 	padding:3px 5px;
 	border:1px solid #999;
