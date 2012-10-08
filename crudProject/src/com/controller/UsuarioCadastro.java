@@ -1,4 +1,4 @@
-package servlet;
+package com.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -81,11 +81,11 @@ public class UsuarioCadastro extends HttpServlet {
 	    }
 	    
 	    if(usuario.isValid()){
-	    	response.sendRedirect("/?p=listar");
+	    	response.sendRedirect("?p=listar");
 	    } else {
 	    	HttpSession session = request.getSession(true);	    
 	        session.setAttribute("usuario",usuario); 
-	        response.sendRedirect("/?p=novo"); 
+	        response.sendRedirect("?p=novo"); 
 	    }
 
     }
