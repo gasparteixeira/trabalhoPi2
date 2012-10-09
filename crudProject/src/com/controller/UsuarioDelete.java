@@ -9,13 +9,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.DAO.UsuarioDAO;
 import com.entity.Usuario;
 
-/**
- * Servlet implementation class UsuarioDelete
- */
 @WebServlet(
 		urlPatterns = { "/UsuarioDelete" }, 
 		initParams = { 
@@ -24,22 +22,11 @@ import com.entity.Usuario;
 public class UsuarioDelete extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public UsuarioDelete() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		PrintWriter out = response.getWriter();
-		
+
 		Long id = Long.valueOf(request.getParameter("id"));
 		Usuario u = new Usuario();
+		String message = null;
 		
 		if(id != null){
 			
@@ -50,12 +37,16 @@ public class UsuarioDelete extends HttpServlet {
 			try{
 				dao.excluir(u);
 				u.setValid(true);
+				message = "Usu‡rio removido da base de dados.";
 			}catch(Exception e){
 				u.setValid(false);
+				message = "Nao foi poss’vel remover o usu‡rio da base.";
 			}    
 			
 		}
-		response.sendRedirect("?p=listar&success="+u.isValid().toString());
+		HttpSession session = request.getSession(true);
+		session.setAttribute("message", message);
+		response.sendRedirect("?p=usuarioListar");
 	}
 
 }

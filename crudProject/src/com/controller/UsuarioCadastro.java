@@ -74,18 +74,19 @@ public class UsuarioCadastro extends HttpServlet {
 	    try{
 	      dao.criar(usuario);
 	      usuario.setValid(true);
-	      message = "Usuario cadastrado com sucesso.";
+	      message = "Usu‡rio cadastrado com sucesso.";
 	    } catch(Exception e){
-	    	message = "Ops, n‹o foi possivel criar usuario. Erro: " +e.getMessage();
+	    	message = "Ops, n‹o foi poss’vel criar usu‡rio. Tente novamente! ";
 	    	usuario.setValid(false);
 	    }
-	    
+	    HttpSession session = request.getSession(true);	   
 	    if(usuario.isValid()){
-	    	response.sendRedirect("?p=listar");
+	    	session.setAttribute("message", message);
+	    	response.sendRedirect("?p=usuarioListar");
 	    } else {
-	    	HttpSession session = request.getSession(true);	    
+	    	session.setAttribute("message", message);
 	        session.setAttribute("usuario",usuario); 
-	        response.sendRedirect("?p=novo"); 
+	        response.sendRedirect("?p=usuarioNovo"); 
 	    }
 
     }

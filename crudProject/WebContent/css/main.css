@@ -104,6 +104,12 @@
 	font:normal 12px "Trebuchet MS";
 	margin-bottom:10px;
 }
+.message{
+	padding:5px 10px;
+	border:1px solid #FFCC00;
+	color:#009900;
+	background: #FFFFCC;
+}
 #base{
 	width: 1003px;
 	height:20px;

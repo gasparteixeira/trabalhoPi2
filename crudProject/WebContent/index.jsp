@@ -16,12 +16,12 @@
 <div id="menu">
 	<ul>
 		<li><a href="?">Inicial</a></li>
-		<li><a href="?p=novo">Novo</a></li>
+		<li><a href="?p=usuarioNovo">Novo</a></li>
 		<li><a href="#">Sair</a></li>
 	</ul>
 </div>
 <div id="contente">
-<% String p = request.getParameter("p"); %>
+<% String p = request.getParameter("p");%>
 <jsp:include page="<%= Config.getRoute(p) %>"></jsp:include>
 
 </div>

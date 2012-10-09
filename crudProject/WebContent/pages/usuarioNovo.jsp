@@ -5,7 +5,10 @@
 	<%@page import="java.util.List"%>
 
 	<div class="frmNovo">
-	<h1>Inserindo novo Usuario</h1>
+	<h1>Inserindo novo Usuário</h1>
+	<% if(session.getAttribute("message") != null){ %>
+        <div class="message">${message}</div>
+   <% } %>
 	  <form action="Cadastro" method="post">
 	     <label for="nome">Nome:</label>
 	     <input type="text" id="nome" name="nome"  />
@@ -17,3 +20,4 @@
 	     <input type="submit" value="Cadastrar" />
 	  </form>
 	</div>
+<% session.removeAttribute("message"); %>

@@ -53,14 +53,12 @@ public class UsuarioDAO extends BaseDAO {
 	public void alterar(Usuario t) throws Exception{
 		
 		PreparedStatement stmt = null;
-		String senha = (t.getSenha().isEmpty()) ?"":", senha = ? ";
-		String sql = "update usuario set nome = ?, email = ? "+senha+"where id = ?";
+		String sql = "update usuario set nome = ?, email = ? , senha = ? where id = ?";
 		try {
 			stmt = conexao.prepareStatement(sql);
 			stmt.setString(1, t.getNome());
 			stmt.setString(2, t.getEmail());
-			if(!t.getSenha().isEmpty())
-				stmt.setString(3, t.getSenha());
+			stmt.setString(3, t.getSenha());
 			stmt.setLong(4, t.getId());
 			stmt.executeUpdate();
             conexao.commit();
@@ -111,6 +109,27 @@ public class UsuarioDAO extends BaseDAO {
         }
 		
 		return lista_usuario;
+	}
+	
+	public Usuario listarPor(Usuario t) throws Exception{
+		
+		
+		PreparedStatement stmt = null;
+		String sql = "select * from usuario where id = ?";
+		stmt = conexao.prepareStatement(sql);
+		stmt.setLong(1, t.getId());
+        ResultSet rs = stmt.executeQuery();
+        conexao.commit();
+        
+		Usuario usuario = new Usuario();
+		while(rs.next()) {
+			usuario.setId(rs.getLong(1));
+            usuario.setNome(rs.getString(2));
+            usuario.setEmail(rs.getString(3));
+            usuario.setData(rs.getDate(5));
+            
+		}
+		return usuario;
 	}
 
 }
