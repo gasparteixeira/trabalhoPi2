@@ -1,4 +1,4 @@
-package com.databaseAccess;
+package com.DAO.config;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -29,7 +29,7 @@ public class DatabaseProperties
         try
         {
             //Carrega o arquivo de properties
-            prop.load(new FileInputStream(".\\src\\com\\databaseAccess\\databaseConfig.properties"));
+            prop.load(new FileInputStream(".\\src\\com\\DAO\\config\\databaseConfig.properties"));
 
             //coleta as propriedades
             this.url = prop.getProperty("url");
