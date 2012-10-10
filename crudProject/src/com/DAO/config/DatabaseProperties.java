@@ -29,7 +29,8 @@ public class DatabaseProperties
         try
         {
             //Carrega o arquivo de properties
-            prop.load(new FileInputStream(".\\src\\com\\DAO\\config\\databaseConfig.properties"));
+            //prop.load(new FileInputStream(".\\src\\com\\DAO\\config\\databaseConfig.properties"));
+            prop.load(new FileInputStream(".\\databaseConfig.properties"));
 
             //coleta as propriedades
             this.url = prop.getProperty("url");
