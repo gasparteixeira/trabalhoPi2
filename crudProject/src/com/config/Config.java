@@ -10,7 +10,7 @@ public class Config {
 			page = p + ".jsp";
 			page = contextPath + page;
 		} else {
-			page = "pages/usuarioListar.jsp";
+			page = "pages/usuarioLogin.jsp";
 		}
 		return page;
 	}

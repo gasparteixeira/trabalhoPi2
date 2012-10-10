@@ -81,7 +81,7 @@
 	height:1px;
 	clear:both;
 }
-.frmNovo input.submit,
+/*.frmNovo input.submit,
 .frmNovo input[type="submit"]{
 	-webkit-border-radius: 5px;
     -moz-border-radius: 5px;
@@ -103,7 +103,7 @@
 	background:#f0f0f0;
 	font:normal 12px "Trebuchet MS";
 	margin-bottom:10px;
-}
+}*/
 .message{
 	padding:5px 10px;
 	border:1px solid #FFCC00;
@@ -118,4 +118,57 @@
 	padding-top:10px;
 	border-top: 1px dotted #ccc;
 	display:block;
+}
+.login{
+	width: 300px;
+	height: 200px;
+	padding:10px;
+	-webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+	border-width: 1px;
+	border-style: solid;
+	border-left-color: #f0f0f0;
+	border-top-color: #f0f0f0;
+	border-right-color: #ccc;
+	border-bottom-color: #ccc;
+	-webkit-box-shadow: 2px 2px 10px #ccc;
+    box-shadow: 2px 2px 10px #ccc;
+    margin:100px auto;
+}
+.login label{
+	display:block;
+	margin-top:10px;
+}
+.login h3{
+	margin-top:5px;	
+}
+.resposta{
+	color: red;
+}
+input.text,
+input.password,
+input[type="text"],
+input[type="password"]{
+	-webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    padding:5px 10px;
+    font: bold 14px "Trebuchet MS";
+    color:#fff;
+    background: #666;
+    border:1px solid #444;
+    width:275px;
+}
+input.submit,
+input[type="submit"]{
+	-webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    padding:3px 10px;
+    font: bold 12px "Trebuchet MS";
+    color:#fff;
+    background: #666;
+    border:1px solid #444;
+    margin-top:10px;
 }

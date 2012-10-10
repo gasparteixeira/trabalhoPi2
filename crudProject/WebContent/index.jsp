@@ -15,7 +15,7 @@
 </div>
 <div id="menu">
 	<ul>
-		<li><a href="?">Inicial</a></li>
+		<li><a href="?p=usuarioListar">Inicial</a></li>
 		<li><a href="?p=usuarioNovo">Novo</a></li>
 		<li><a href="#">Sair</a></li>
 	</ul>
