@@ -16,24 +16,27 @@ public class Main
     {
         final UsuarioDAO d = new UsuarioDAO();
         final Usuario u = new Usuario();
+        Usuario result = null;
         u.setNome("nome");
-        u.setSenha("senha");
+        u.setSenha("senha1");
 
         try
         {
-            if (d.verificaCredenciaisUsuario(u))
-            {
-                System.out.println("usuario encontrado!");
-            }
-            else
-            {
-                System.out.println("usuario NAO encontrado!");
-            }
+            result = d.verificaCredenciaisUsuario(u);
         }
         catch (final Exception e)
         {
             // TODO Auto-generated catch block
             e.printStackTrace();
+        }
+
+        if (result != null)
+        {
+            System.out.println("OK");
+        }
+        else
+        {
+            System.out.println("NOK");
         }
 
     }

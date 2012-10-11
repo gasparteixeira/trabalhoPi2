@@ -165,31 +165,33 @@ public class UsuarioDAO extends BaseDAO
 
     /**
      * Verifica se o usuario recebido tem permissão de acesso ao sistema<br>
-     * retorna true se usuario foi encontrado<br>
-     * retorna false se usuario não foi encontrado<br>
      * 
-     * @return boolean
+     * @return ??
      */
-    public boolean verificaCredenciaisUsuario(final Usuario usuario)
+    public Usuario verificaCredenciaisUsuario(final Usuario usuario)
             throws Exception
     {
 
         PreparedStatement stmt = null;
-        final String sql = "SELECT COUNT(1) FROM usuario WHERE nome= ? AND senha= ?";
-
+        final String sql = "SELECT * FROM usuario WHERE nome= ? AND senha= ?";
+        Usuario resultUsuario = null;
         stmt = conexao.prepareStatement(sql);
+        stmt.setMaxRows(1);
         stmt.setString(1, usuario.getNome());
         stmt.setString(2, usuario.getSenha());
         final ResultSet rs = stmt.executeQuery();
         conexao.commit();
 
-        rs.next();
-        if (rs.getInt(1) > 0)
+        if (rs.next())
         {
-            return true;
+            resultUsuario = new Usuario();
+            resultUsuario.setId(rs.getLong(1));
+            resultUsuario.setNome(rs.getString(2));
+            resultUsuario.setEmail(rs.getString(3));
+            resultUsuario.setData(rs.getDate(5));
+            return resultUsuario;
         }
-        return false;
-
+        return resultUsuario;
     }
 
 }
