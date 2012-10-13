@@ -165,8 +165,9 @@ public class UsuarioDAO extends BaseDAO
 
     /**
      * Verifica se o usuario recebido tem permissão de acesso ao sistema<br>
+     * retorna um usuario null caso não o encontre
      * 
-     * @return ??
+     * @return Usuario
      */
     public Usuario verificaCredenciaisUsuario(final Usuario usuario)
             throws Exception
@@ -193,5 +194,4 @@ public class UsuarioDAO extends BaseDAO
         }
         return resultUsuario;
     }
-
 }

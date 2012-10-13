@@ -1,7 +1,9 @@
 package com.main;
 
-import com.DAO.UsuarioDAO;
-import com.entity.Usuario;
+import java.util.List;
+
+import com.DAO.EstoqueDAO;
+import com.entity.Produto;
 
 /**
  *
@@ -14,15 +16,12 @@ public class Main
      */
     public static void main(final String[] args)
     {
-        final UsuarioDAO d = new UsuarioDAO();
-        final Usuario u = new Usuario();
-        Usuario result = null;
-        u.setNome("nome");
-        u.setSenha("senha1");
 
+        List<Produto> l = null;
+        final EstoqueDAO eDAO = new EstoqueDAO();
         try
         {
-            result = d.verificaCredenciaisUsuario(u);
+            l = eDAO.listarProdutosDoEstoque();
         }
         catch (final Exception e)
         {
@@ -30,13 +29,18 @@ public class Main
             e.printStackTrace();
         }
 
-        if (result != null)
+        if (l != null)
         {
-            System.out.println("OK");
+            System.out.println("idProd\t\tdescricao\tqtd");
+            for (final Produto p : l)
+            {
+                System.out.println(p.getId() + "\t\t" + p.getDescricao() + "\t" + p.getQtd());
+
+            }
         }
         else
         {
-            System.out.println("NOK");
+            System.out.println("lista vazia");
         }
 
     }

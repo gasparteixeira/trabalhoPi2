@@ -6,12 +6,29 @@ package com.entity;
 public class Produto
 {
     private int id;
-    private final String descricao;
+    private String descricao = "";
+    private int qtd;
 
     /**
      * 
      */
-    public Produto(final String descricao)
+    public Produto()
+    {
+
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(final int id)
+    {
+        this.id = id;
+    }
+
+    /**
+     * @param descricao the descricao to set
+     */
+    public void setDescricao(final String descricao)
     {
         this.descricao = descricao;
     }
@@ -30,6 +47,22 @@ public class Produto
     public String getDescricao()
     {
         return descricao;
+    }
+
+    /**
+     * @return the qtd
+     */
+    public int getQtd()
+    {
+        return qtd;
+    }
+
+    /**
+     * @param qtd the qtd to set
+     */
+    public void setQtd(final int qtd)
+    {
+        this.qtd = qtd;
     }
 
 }
