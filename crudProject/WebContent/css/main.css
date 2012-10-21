@@ -15,15 +15,18 @@
 
 #menu{
 	width: 1003px;
-	height:20px;
+	height:30px;
 	line-height: 20px;
 	margin:0 auto;
 	display:block;
+	margin-bottom:15px
 }
 #menu ul{
 	list-style:none;
 	margin:0;
 	padding:0;
+	width:300px;
+	float:right;
 }
 #menu ul li{
 	float:left;
@@ -41,7 +44,47 @@
 	color:#fff;
 	background:#666;
 }
+.acoes{
+	display:block;
+	clear:both;
+	margin-top:10px;
+	padding-top:10px;
+	border-top: 1px dotted #333;
+}
+.acoes a{
+	display:block;
+	padding:3px 5px;
+	background:#f4f4f4;
+	border:1px solid #ddd;
+	color:#666;
+	text-decoration:none;
+	float:left;
+	margin-right:5px;
+}
+.acoes a:hover{
+	color:#fff;
+	background:#666;
+	
+}
 #contente{
+	width: 983px;
+	padding:10px;
+	min-height:450px;
+	margin:0 auto;
+	font-size:12px;
+	-webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+	border-width: 1px;
+	border-style: solid;
+	border-left-color: #f0f0f0;
+	border-top-color: #f0f0f0;
+	border-right-color: #ccc;
+	border-bottom-color: #ccc;
+	-webkit-box-shadow: 2px 2px 10px #ccc;
+    box-shadow: 2px 2px 10px #ccc;
+}
+#contente-home{
 	width: 983px;
 	padding:10px;
 	min-height:450px;
@@ -121,7 +164,7 @@
 }
 .login{
 	width: 300px;
-	height: 200px;
+	height: auto;
 	padding:10px;
 	-webkit-border-radius: 10px;
     -moz-border-radius: 10px;
@@ -160,8 +203,8 @@ input[type="password"]{
     border:1px solid #444;
     width:275px;
 }
-input.submit,
-input[type="submit"]{
+input.submit, input.button,
+input[type="submit"], input[type="button"]{
 	-webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
@@ -171,4 +214,8 @@ input[type="submit"]{
     background: #666;
     border:1px solid #444;
     margin-top:10px;
+}
+.logado{
+	width:300px;
+	float:left;
 }

@@ -18,7 +18,7 @@ import com.excessao.EmailValidator;
 
 
 @WebServlet(
-		urlPatterns = { "/UsuarioEdit" }, 
+		urlPatterns = { "/admin/UsuarioEdit" }, 
 		initParams = { 
 				@WebInitParam(name = "id", value = "")
 		})
@@ -85,7 +85,7 @@ public class UsuarioEdit extends HttpServlet {
 		    	return;
 	    	}
 	    }
-	    if(senha.isEmpty()){
+	    if(senha.isEmpty() || senha == null){
 	    	out.print("<p>ƒ necess‡rio informar sua Senha</p>");
 	    	out.print("<button type=\"button\" name=\"back\" onclick=\"history.back()\">Voltar</button>");
 	    	return;
@@ -97,6 +97,8 @@ public class UsuarioEdit extends HttpServlet {
 	    usuario.setSenha(senha);
 	    usuario.setId(id);
 	    usuario.setValid(false);
+	    
+	    System.out.println(nome + " " + email + " " + senha);
 	    
 	    UsuarioDAO dao = new UsuarioDAO();
 	    

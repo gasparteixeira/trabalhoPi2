@@ -15,7 +15,7 @@ import com.entity.Usuario;
 import com.excessao.EmailValidator;
 
 
-@WebServlet("/Cadastro")
+@WebServlet("/admin/Cadastro")
 public class UsuarioCadastro extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -33,43 +33,65 @@ public class UsuarioCadastro extends HttpServlet {
      * @throws IOException
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		PrintWriter out = response.getWriter();
+        
 		String message = null;
-		
+		HttpSession session = request.getSession(true);	
+		Usuario usuario = new Usuario();
 
 	    String nome = request.getParameter("nome");
 	    String email = request.getParameter("email");
 	    String senha = request.getParameter("senha");
-	    if(nome.isEmpty()){
-	    	out.print("<p>ƒ necess‡rio informar seu Nome</p>");
-	    	out.print("<button type=\"button\" name=\"back\" onclick=\"history.back()\">Voltar</button>");
-	    	return;
-	    }
-	    if(email.isEmpty()){
-	    	out.print("<p>ƒ necess‡rio informar seu E-mail</p>");
-	    	out.print("<button type=\"button\" name=\"back\" onclick=\"history.back()\">Voltar</button>");
-	    	return;
-	    }else{
-	    	EmailValidator em = new EmailValidator();
-	    	if(!em.validate(email)){
-	    		out.print("<p>O E-mail informado Ž falso.</p>");
-	    		out.print("<button type=\"button\" name=\"back\" onclick=\"history.back()\">Voltar</button>");
-		    	return;
-	    	}
-	    }
-	    if(senha.isEmpty()){
-	    	out.print("<p>ƒ necess‡rio informar sua Senha</p>");
-	    	out.print("<button type=\"button\" name=\"back\" onclick=\"history.back()\">Voltar</button>");
-	    	return;
-	    }
-	    Usuario usuario = new Usuario();
 	    usuario.setNome(nome);
 	    usuario.setEmail(email);
 	    usuario.setSenha(senha);
 	    usuario.setValid(false);
+	      
+	    if(nome.isEmpty()){
+	    	message = "ƒ necess‡rio informar seu Nome.";
+	    	session.setAttribute("message", message);
+	    	session.setAttribute("usuario", usuario);
+	    	response.sendRedirect("?p=usuarioNovo");
+	    	return;
+	    }
+	    if(email.isEmpty()){
+	    	message = "ƒ necess‡rio informar seu E-mail.";
+	    	session.setAttribute("message", message); 
+	    	session.setAttribute("usuario", usuario);
+	    	response.sendRedirect("?p=usuarioNovo");
+	    	return;
+	    }else{
+	    	EmailValidator em = new EmailValidator();
+	    	if(!em.validate(email)){
+	    		message = "O E-mail informado Ž falso.";
+		    	session.setAttribute("message", message);
+		    	session.setAttribute("usuario", usuario);
+		    	response.sendRedirect("?p=usuarioNovo");
+		    	return;
+	    	}
+	    }
+	    if(senha.isEmpty()){
+	    	message = "ƒ necess‡rio informar sua Senha.";
+	    	session.setAttribute("message", message);
+	    	session.setAttribute("usuario", usuario);
+	    	response.sendRedirect("?p=usuarioNovo");
+	    	return;
+	    }
 
 	    UsuarioDAO dao = new UsuarioDAO();
+	    
+	    try {
+	    	Integer i = dao.validaExisteEmail(usuario.getEmail());
+	    	if(i > 0){
+	    		message = "O E-mail '"+usuario.getEmail()+"' j‡ foi cadasatrado anteriormente. Tente outro e-mail.";
+	    		session.setAttribute("message", message);
+	    		session.setAttribute("usuario", usuario);
+		    	response.sendRedirect("?p=usuarioNovo");
+		    	return;
+	    	}
+	    } catch (Exception e) {
+	    	message = "Ops, n‹o foi poss’vel verificar o e-mail na base. Tente novamente!";
+	    }
+	    
 	    
 	    try{
 	      dao.criar(usuario);
@@ -79,10 +101,11 @@ public class UsuarioCadastro extends HttpServlet {
 	    	message = "Ops, n‹o foi poss’vel criar usu‡rio. Tente novamente! ";
 	    	usuario.setValid(false);
 	    }
-	    HttpSession session = request.getSession(true);	   
+	    
 	    if(usuario.isValid()){
-	    	session.setAttribute("message", message);
-	    	response.sendRedirect("?p=usuarioListar");
+		    	session.setAttribute("message", message);
+		    	session.setAttribute("usuario", usuario);
+		    	response.sendRedirect("?p=usuarioListar");
 	    } else {
 	    	session.setAttribute("message", message);
 	        session.setAttribute("usuario",usuario); 

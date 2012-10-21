@@ -1,6 +1,5 @@
 <%@page import="com.entity.Usuario" %>
-<% Usuario u = (Usuario) session.getAttribute("editUsuario");
-%>
+<% Usuario u = (Usuario) session.getAttribute("editUsuario");%>
 
 
 <div class="frmNovo">

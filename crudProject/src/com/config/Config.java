@@ -6,7 +6,7 @@ public class Config {
 		String page = null;
 		if (p != null) {
 			String contextPath = "";
-			contextPath = "pages/";
+			contextPath = "../pages/";
 			page = p + ".jsp";
 			page = contextPath + page;
 		} else {

@@ -12,6 +12,7 @@ int i = 0;
    <% if(session.getAttribute("message") != null){ %>
         <div class="message">${message}</div>
    <% } %>
+   <h3>Listando os Usurários cadastrados:</h3>
 	<table>
 		<thead>
 			<tr>
@@ -27,14 +28,19 @@ int i = 0;
 				<td><%=u.getNome() %></td>
 				<td><%=u.getEmail() %></td>
 				<%java.text.DateFormat df = new java.text.SimpleDateFormat("EEE, d MMMM yyyy"); %>
-				<td><%=df.format(u.getData()) %></td>
-				<td><a href="UsuarioEdit?id=<%=u.getId()%>">Editar</a></td>
-				<td><a href="UsuarioDelete?id=<%=u.getId()%>" onclick="javascript:return confirm('Tem certeza que deseja excluir o usuário <%=u.getNome() %>');" >
+				<td align="center"><%=df.format(u.getData()) %></td>
+				<td align="center"><a href="UsuarioEdit?id=<%=u.getId()%>">Editar</a></td>
+				<td align="center"><a href="UsuarioDelete?id=<%=u.getId()%>" onclick="javascript:return confirm('Tem certeza que deseja excluir o usuário <%=u.getNome() %>');" >
 					Excluir</a></td>
 			</tr>
 			<% i++; } %>
 		</tbody>
 	</table>
+	<div class="acoes">
+	<a href="?p=usuarioListar">Listar</a>
+	<a href="?p=usuarioNovo">Novo</a>
+	</div>
+	
 </div>
 <% session.removeAttribute("message"); %>
 

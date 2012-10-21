@@ -15,7 +15,7 @@ import com.DAO.UsuarioDAO;
 import com.entity.Usuario;
 
 @WebServlet(
-		urlPatterns = { "/UsuarioDelete" }, 
+		urlPatterns = { "/admin/UsuarioDelete" }, 
 		initParams = { 
 				@WebInitParam(name = "id", value = "")
 		})

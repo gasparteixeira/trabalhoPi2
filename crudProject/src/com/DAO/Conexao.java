@@ -4,34 +4,60 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class Conexao {
+import com.DAO.config.DatabaseProperties;
 
-	private String url = "jdbc:postgresql://localhost:5432/trabalhoPi2";
-	private String user = "postgres";
-	private String password = "postgres";
-	private String postgresqlDriver = "org.postgresql.Driver";
-	private Connection connection;
+public class Conexao
+{
 
-	protected Connection criaConexao(Boolean autocommit) throws Exception {
-		try {
-			Class.forName(postgresqlDriver);
-		} catch (ClassNotFoundException e) {
-			throw e;
-		}
-		try {
-			connection = DriverManager.getConnection(url, user, password);
-			connection.setAutoCommit(autocommit);
-		} catch (SQLException e) {
-			throw e;
-		}
-		return connection;
-	}
+    private final String url = "jdbc:postgresql://localhost/trabalhoPi2";
+    private final String user = "postgres";
+    private final String password = "abc";
+    private final String postgresqlDriver = "org.postgresql.Driver";
+    private Connection connection;
+    private final DatabaseProperties db = new DatabaseProperties();
 
-	protected void fechaConexao() throws SQLException {
-		try {
-			connection.close();
-		} catch (SQLException e) {
-			throw e;
-		}
-	}
+    public Conexao()
+    {
+        //inicializa as configurações do banco        
+        //db.getProperties();
+        //url = db.getUrl();
+        //user = db.getUser();
+        //password = db.getPass();
+    }
+
+    protected Connection criaConexao(final Boolean autocommit)
+            throws Exception
+    {
+        try
+        {
+            Class.forName(postgresqlDriver);
+        }
+        catch (final ClassNotFoundException e)
+        {
+            throw e;
+        }
+        try
+        {
+            connection = DriverManager.getConnection(url, user, password);
+            connection.setAutoCommit(autocommit);
+        }
+        catch (final SQLException e)
+        {
+            throw e;
+        }
+        return connection;
+    }
+
+    protected void fechaConexao()
+            throws SQLException
+    {
+        try
+        {
+            connection.close();
+        }
+        catch (final SQLException e)
+        {
+            throw e;
+        }
+    }
 }

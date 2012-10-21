@@ -1,8 +1,11 @@
+
 <div class="login">
  <h3>Área Restrita:</h3>
 	
  <div class="resposta">
- Digite seu login e senha para acessar.
+ <% if(session.getAttribute("message") != null){ %>
+        <div class="message" style="color:red">${message}</div>
+   <% } %>
  </div>
   <form class="frmLogin" action="Login" method="post">
     <label for="email">Seu E-mail:</label>
@@ -12,3 +15,4 @@
   	<input type="submit" value="Acessar" />
   </form>
 </div>
+<% session.removeAttribute("message"); %>
