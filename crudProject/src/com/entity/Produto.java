@@ -10,7 +10,7 @@ public class Produto
     private int qtd;
     private Boolean valid;
 
-    /**
+	/**
      * 
      */
     public Produto()
@@ -65,8 +65,8 @@ public class Produto
     {
         this.qtd = qtd;
     }
-
-	public Boolean isValid() {
+    
+    public Boolean isValid() {
 		return valid;
 	}
 
@@ -74,5 +74,4 @@ public class Produto
 		this.valid = valid;
 	}
 
-    
 }
