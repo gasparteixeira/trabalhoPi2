@@ -2,7 +2,6 @@ package com.DAO;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -89,7 +88,7 @@ public class ProdutoDAO extends BaseDAO
         	
         	stmt = conexao.prepareStatement(sql);
             stmt.setLong(1, p.getId());
-            int rs = stmt.executeUpdate();
+            stmt.executeUpdate();
             conexao.commit();
         }
         catch (final SQLException e)
@@ -322,4 +321,5 @@ public class ProdutoDAO extends BaseDAO
 		
 		return indice;
 	}
+
 }

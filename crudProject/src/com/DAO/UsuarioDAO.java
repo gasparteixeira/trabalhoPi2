@@ -47,7 +47,7 @@ public class UsuarioDAO extends BaseDAO
             stmt.setString(2, t.getEmail());
             stmt.setString(3, t.getSenha());
             stmt.setDate(4, d);
-            final ResultSet rs = stmt.executeQuery();
+            ResultSet rs = stmt.executeQuery();
             conexao.commit();
         }
         catch (final SQLException e)

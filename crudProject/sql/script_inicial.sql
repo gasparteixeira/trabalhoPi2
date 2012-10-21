@@ -38,6 +38,7 @@ DROP TABLE IF EXISTS estoque cascade;
 CREATE TABLE estoque (
   IDEsto serial  NOT NULL
   , IDProd INTEGER
+  , qtd INTEGER
   , PRIMARY KEY(IDEsto)
   , FOREIGN KEY(IDProd)
 	REFERENCES produto(IDProd));
