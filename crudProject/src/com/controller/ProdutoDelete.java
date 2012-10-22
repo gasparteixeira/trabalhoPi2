@@ -28,7 +28,6 @@ public class ProdutoDelete extends HttpServlet {
 		Produto p = new Produto();
 		String message = null;
 		HttpSession session = request.getSession(true);
-		System.out.println("excluindo o cara. "+ idprod);
 		if(idprod != null){
 			p.setId(idprod);
 			p.setValid(false);

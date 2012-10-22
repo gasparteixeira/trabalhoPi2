@@ -97,8 +97,6 @@ public class UsuarioEdit extends HttpServlet {
 	    usuario.setId(id);
 	    usuario.setValid(false);
 	    
-	    System.out.println(nome + " " + email + " " + senha);
-	    
 	    UsuarioDAO dao = new UsuarioDAO();
 	    
 	    try{

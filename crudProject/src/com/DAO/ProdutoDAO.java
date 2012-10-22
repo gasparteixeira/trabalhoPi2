@@ -124,7 +124,6 @@ public class ProdutoDAO extends BaseDAO
             int rs = stmt.executeUpdate();
             conexao.commit();
             int id_produto = 0;
-            System.out.println(rs);
             if(rs > 0){
             	id_produto = p.getId();
             	
