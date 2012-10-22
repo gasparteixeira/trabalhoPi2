@@ -187,13 +187,13 @@ public class UsuarioDAO extends BaseDAO
      * 
      * @return Usuario
      */
-    public Usuario verificaCredenciaisUsuario(final Usuario usuario)
+    public Usuario verificaCredenciaisUsuario(Usuario usuario)
             throws Exception
     {
 
         PreparedStatement stmt = null;
         final String sql = "SELECT * FROM usuario WHERE email= ? AND senha= ?";
-        Usuario resultUsuario = null;
+        Usuario resultUsuario = new Usuario();
         stmt = conexao.prepareStatement(sql);
         stmt.setMaxRows(1);
         stmt.setString(1, usuario.getEmail());
@@ -203,12 +203,14 @@ public class UsuarioDAO extends BaseDAO
 
         if (rs.next())
         {
-            resultUsuario = new Usuario();
             resultUsuario.setId(rs.getLong(1));
             resultUsuario.setNome(rs.getString(2));
             resultUsuario.setEmail(rs.getString(3));
             resultUsuario.setData(rs.getDate(5));
+            resultUsuario.setValid(true);
             return resultUsuario;
+        }else{
+        	resultUsuario.setValid(false);
         }
         return resultUsuario;
     }

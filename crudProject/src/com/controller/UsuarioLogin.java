@@ -47,10 +47,8 @@ public class UsuarioLogin extends HttpServlet {
 
 		try{
 		   uResposta =	dao.verificaCredenciaisUsuario(u);
-		   uResposta.setValid(true);
 		} catch (Exception e){
-			uResposta.setValid(false);
-			//throw new ServletException(e);
+			throw new ServletException(e);
 		}
 		
 		
